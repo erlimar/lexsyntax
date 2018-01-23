@@ -63,6 +63,7 @@ Nessa nossa **descrição formal** acima nós definimos 4 (quatro) símbolos (ta
 são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
 
 * `EXPRESSAO`
+
   É basicamente nosso ponto de partida, o objetivo da nossa descrição, ou a própria expressão definida.
   Também opderíamos chamá-la de `ROOT`, que é a raiz de nossa descrição.
   
@@ -74,6 +75,7 @@ são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
   A partir desse ponto, o que temos em seguida são simples decomposições de símbolos, ou **tokens**.
 
 * `NUMERO`
+
   Esse por sua vez, pode ser somente uma coisa: Uma combinação de um ou mais `DECIMAL` _(O símbolo `+`
   no fim do nome indica isso)_, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
   `DECIMAL` novamente.
@@ -82,6 +84,7 @@ são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
   soubermos...
 
 * `DECIMAL`
+
   Esse é não é tão complexo, porque é na verdade um caractere `0` ou o caractere `1` ou o caractere
   `2` ou o caractere `3` ou o caractere `4` ou o caractere `5` ou o caractere `6` ou o caractere `7`
   ou o caractere `8` ou o caractere `9`.
@@ -89,71 +92,70 @@ são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
   Bem que eu poderia só dizer que é um dos caracteres: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
 
 * `SEPARADOR`
+
   E esse então, só pode ser um `.` (ponto). Nada além disso.
   
 ## Explicando
 
 O que nós fizemos acima na visão geral que apresentamos, foi simplesmente definir um termo, ou melhor
-uma `<EXPRESSAO>`, que é explicado por um conjunto possível e conhecido, significado por outros
-simbolos, que por sua vez são explicados individualmente, seguindo uma linha de decomposição de
+uma `EXPRESSAO`, que é explicado por um conjunto possível e conhecido; significado por outros
+simbolos que por sua vez são explicados individualmente, seguindo uma linha de decomposição de
 palavras até chegar ao mínimo de um `caractere` ou uma lista de `caracteres` conhecida.
 
 No fim das contas o que temos é uma restrição ao uso de um conjunto conhecido de caracteres que podem
 ser usados em uma expressão, esses caracteres só podem ser agrupados em uma ordem estabelecida
 rigidamente, e que qualquer coisa fora disso é uma **expressão inválida**.
-Chamamos isso de gramática.
+Chamamos isso de **gramática**.
 
 ## Voltando a Visão Geral
 
-Com essa explicação que clarea nossa mente, podemos então voltar ao exemplo.
+Com essa explicação que clarea nossa mente (pelo menos parcialmente, eu espero), podemos então
+voltar ao exemplo inicial.
 
-Então queremos que o usuário nos informe "a tal distância".
+Então pedimos ao usuário que nos informe _"a tal distância"_.
 
-Então o usuário nos informa **6s7,90**, e o que você diz? **POW!** valor errado.
+Ele então nos informa o valor **6s7,90**, e você logo diz? **POW!**: o valor está errado!
 
-Mas então ele nos informa **76.56**. E você diz: **OBRIGADO!** a distância é de **76.56 metros!**
+Logo em seguida ele nos informa o valor **76.56**, e você diz: **OBRIGADO!**: a distância é de
+**76.56 metros!**
 
-## Agora me explique você, como conseguiu determinar se o valor estava certo ou errado?
+## Agora me explique você: Como você conseguiu determinar se o valor estava certo ou errado?
 
-Foi tão rápido que você nem percebeu. Mas você avaliou cada caractere dessa sequência da esquerda
-para a direita (se você fosse um _oriental_ faria da direita para a esquerda, mas isso não vem
-ao caso agora), um após o outro, vez por vez.
+Foi tão rápido que você nem percebeu!
+
+Mas você avaliou cada caractere dessa sequência da esquerda para a direita (se você fosse um
+_oriental_ faria da direita para a esquerda, mas isso não vem ao caso agora), um após o outro,
+vez por vez até chegar ao final ou até encontrar um erro.
+
+### Vamos seguir o caminho que seu cérebro percorreu até descobrir que o valor estava errado
 
 Você pegou a primeira expressão **"6s7,90"** e começou a avaliar cada caractere:
 
-1. Viu que a expressão aceita `<NUMERO_DECIMAL>` e só, ou um `<NUMERO_DECIMAL>` com um `<SEPARADOR>`
-   com um `<NUMERO_DECIMAL>`.
-2. Pegou o primeiro caractere, **"6"** e perguntou é um `<NUMERO_DECIMAL>`?
-3. Daí percebeu que você não sabia o que é um `<NUMERO_DECIMAL>`, e então procurou em seu dicionário
-   de símbolos o que significava um `<NUMERO_DECIMAL>`. Então descobriu que se trata de um `<DECIMAL>`
-   e só, ou um `<DECIMAL>` com um `<DECIMAL>`.
-4. Daí com o **"6"** que já estava na mão e já sabendo o que era um `<NUMERO_DECIMAL>` perguntou,
-   é um `<DECIMAL>`?
-5. Daí, novamente percebeu que você também não sabia o que era um `<DECIMAL>`, recorreu mais uma vez
-   a seu dicionário de símbolos, e descobriu que se tratava de um dos seguintes caracteres: 0, 1, 2,
-   3, 4, 5, 6, 7, 8 ou 9. Agora ficou fácil, você descobriu que se tratava realmente de um `<DECIMAL>`
-   válido.
-   
-   ** Continuar aqui!!!!!!!!!! **
-   
-6. Com isso você percebeu que ainda existem mais caracteres disponíveis, e que existem mais definiões
-   compostas para essa expressão. Poderia ser um `<DECIMAL> <DECIMAL>`.
-7. Daí lancou mão do próximo caractere na lista, no caso o **"s"**, para avaliar seu significado, se
-   for um `<DECIMAL>` então o token ainda teria mais caracteres. Ao que também percebeu não se tratava
-   de um `<DECIMAL>`. Portanto determinou que se tratava de um `<DECIMAL>` e só, com isso definiu
-   aquele **"6"** como sendo o primeiro **TOKEN** encontrado, do tipo `<NUMERO_DECIMAL>` composto
-   por um `<DECIMAL>` e só.
-8. Se não houvesse mais nada, sua expressão seria válida como sendo de um `<NUMERO_DECIMAL>` e só,
-   composta por um `<DECIMAL>` **"6"** e só. Mas como não era o caso, você tem mais caracteres
-   disponíveis, continuou com sua busca por tokens válidos.
-9. Viu que já que não se tratava de um `<NUMERO_DECIMAL>` e só, poderia se tratar de um Continuando agora do **"s"**. Mas você viu que
-   não era o caso, pois não estava na lista válida de `<DECIMAL>`, ou seja: 0, 1, 2, 3, 4, 5, 6, 7,
-   8 ou 9. Logo era **inválido**.
-8. Como não fazia mais parte de um conteúdo aceito para o símbolo `<NUMERO_DECIMAL>`, pois não era
-   um `<DECIMAL>` ou um `<DECIMAL>` `<DECIMAL>`. Procurou saber se havia uma outra alternativa.
-9. E Notou que ainda poderia se tratar de um `<NUMERO_DECIMAL>` com um `<SEPARADOR>` e um
-   `<NUMERO_DECIMAL>`. Como já sabe do que se trata um `<NUMERO_DECIMAL>` e que o tal **"s"** não
-   era um
+ 1. Viu que a expressão espera um `NUMERO` e só.
+ 2. Pegou a expressão **"6s7,90"** e perguntou: é um `NUMERO`?
+ 3. Daí percebeu que você não sabia o que é um `NUMERO`, e então procurou em seu dicionário de
+    símbolos o que significava um `NUMERO`. Foi aí que conheceu que só poderia ser uma combinação
+    de um ou mais `DECIMAL`, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
+   `DECIMAL` novamente.
+ 4. Daí com **"6s7,90"** montou sua matrix de verificação, que seria: `Lista de DECIMAL`, e
+    `Um SEPARADOR` e `Lista de DECIMAL`. E começou a pegar as partes, a primeira é uma
+    `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
+ 5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
+    `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
+ 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando tudo que era
+    um `DECIMAL`. O que na verdade só foi o caractere `6`, porque `s` não atendia ao critério.
+ 7. Beleza! Até agora já temos o primeiro item, uma `Lista de DECIMAL` contendo um item: `6`.
+ 8. Você então, a partir do que sobrou, ou seja **"s7,90"**, continuou a buscar suas partes.
+    O que você esperava agora deveria ser `Um SEPARADOR`. E vejam só! Você também não sabe o que é
+    um `SEPARADOR`.
+ 9. Volta a recorrer a seu dicionário, e descobre que um separador só pode ser o caractere `.` (ponto).
+10. Com isso, você percebe que o caractere da vez, o **"s"** não atende ao requisito. E não
+    encontrou um valor para `SEPARADOR`.
+11. Nesse ponto não vale mais a pena continuar, porque:
+    a) O que você esperava não era um `SPERADOR`, que era necessário para determinar um `NUMERO`,
+    b) Que por sua vez, o `NUMERO` era a única opção que se tinha pra determinar o que é a `EXPRESSAO`
+12. Então você concluíu: **Expressão Inválida!**. E foi por isso que você disse:
+    **POW!**: o valor está errado!
 
 ## Notas
 
