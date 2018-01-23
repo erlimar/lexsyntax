@@ -60,38 +60,37 @@ SEPARADOR
 ```
 
 Nessa nossa **descrição formal** acima nós definimos 4 (quatro) símbolos (também chamados **tokens**),
-são eles: `EXPRESSAO`, `NUMERO_DECIMAL`, `SEPARADOR` e `DECIMAL`.
+são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
 
-* `<EXPRESSAO>`
+* `EXPRESSAO`
   É basicamente nosso ponto de partida, o objetivo da nossa descrição, ou a própria expressão definida.
-  Também opderíamos chamá-la de `<ROOT>`, que é a raiz de nossa descrição.
+  Também opderíamos chamá-la de `ROOT`, que é a raiz de nossa descrição.
   
-  Nossa `EXPRESSAO` pode somente 2 (duas) coisas. Um simples `NUMERO_DECIMAL` ou uma combinação
-  de `NUMERO_DECIMAL`, um `SEPARADOR` e outro `NUMERO_DECIMAL`.
+  Nossa `EXPRESSAO` pode ser somente uma coisa: Um `NUMERO`.
   
-  Não sabemos ainda o que é um `NUMERO_DECIMAL` nem ao menos um `SEPARADOR`, mas já sabemos que,
-  quando soubermos disso, já conheceremos se temos uma `EXPRESSAO` válida ou não.
+  Não sabemos ainda o que é um `NUMERO`, mas já sabemos que: quando soubermos disso, já conheceremos se
+  temos uma `EXPRESSAO` válida ou não e qual seu conteúdo.
   
   A partir desse ponto, o que temos em seguida são simples decomposições de símbolos, ou **tokens**.
 
-* `<NUMERO_DECIMAL>`
-  Um `NUMERO_DECIMAL` por sua vez, também só pode ser 2 (duas) coisas. Um `DECIMAL` ou uma
-  combinação de `DECIMAL` e outro `DECIMAL`.
+* `NUMERO`
+  Esse por sua vez, pode ser somente uma coisa: Uma combinação de um ou mais `DECIMAL` _(O símbolo `+`
+  no fim do nome indica isso)_, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
+  `DECIMAL` novamente.
+  
+  Da mesma forma, ainda não sabemos o que é um `DECIMAL` nem o que é um `SEPARADOR`, mas quando
+  soubermos...
 
-* `<SEPARADOR>`
-  Um `SEPARADOR` é algo bem mais simples. Tão simples como um **caractere**. E nesse caso só pode
-  ser o caractere `.` (ponto). Nada além disso.
+* `DECIMAL`
+  Esse é não é tão complexo, porque é na verdade um caractere `0` ou o caractere `1` ou o caractere
+  `2` ou o caractere `3` ou o caractere `4` ou o caractere `5` ou o caractere `6` ou o caractere `7`
+  ou o caractere `8` ou o caractere `9`.
   
-* `<DECIMAL>`
-  E um `DECIMAL` (obserque que não estamos falando de um `NUMERO_DECIMAL`, mas somente de um `DECIMAL`)
-  é também algo tão simples quanto um **caractere**, porém um pouco menos complexo, porque é na
-  verdade um caractere `0` ou o caractere `1` ou o caractere `2` ou o caractere `3` ou o caractere `4`
-  ou o caractere `5` ou o caractere `6` ou o caractere `7` ou o caractere `8` ou o caractere `9`.
-  
-  Ufa!...
-  
-  Bem que eu poderia só dizer que é um dos caracteres da lista: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+  Bem que eu poderia só dizer que é um dos caracteres: `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
 
+* `SEPARADOR`
+  E esse então, só pode ser um `.` (ponto). Nada além disso.
+  
 ## Explicando
 
 O que nós fizemos acima na visão geral que apresentamos, foi simplesmente definir um termo, ou melhor
