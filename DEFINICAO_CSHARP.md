@@ -59,4 +59,6 @@ var expressao = new ListToken("EXPRESSAO", new Token[] { numeroToken });
 
 var resultFail = expressao.Eval("6s7,90"); // Throw Exception!
 var resultOk = expressao.Eval("76.56"); // Success!
+
+delegate EvalFunc = (string code) => return new TokenResult();
 ```
