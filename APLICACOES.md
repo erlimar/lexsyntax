@@ -40,7 +40,7 @@ SEPARADOR
 * `000`
 * `8878787.077676`
 
-## Data PT-BR
+## Datas
 
 ### Definição
 
