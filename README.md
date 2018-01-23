@@ -214,7 +214,7 @@ let resultado = {
   "valor": {
     "tipo": "token",
     "id": "NUMERO",
-    "valor: [
+    "valor": [
       {
         "tipo": "token",
         "id": "DECIMAL",
