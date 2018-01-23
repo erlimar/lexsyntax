@@ -32,26 +32,36 @@ omitiria o `mt`, porque você já sabe que a distância sempre será em metros.
 Logo você poderia descrever **formalmente** essa **expressão** que o usuário deveria informar
 como abaixo:
 
-```
-<EXPRESSAO>      ::= <NUMERO_DECIMAL>
-                   | <NUMERO_DECIMAL> <SEPARADOR> <NUMERO_DECIMAL>
-                   ;
-<NUMERO_DECIMAL> ::= <DECIMAL>
-                   | <DECIMAL> <DECIMAL>
-                   ;
-<SEPARADOR>      ::= "."
-                   ;
-<DECIMAL>        ::= "0"
-                   | "1"
-                   | "2"
-                   | "3"
-                   | "4"
-                   | "5"
-                   | "6"
-                   | "7"
-                   | "8"
-                   | "9"
-                   ;
+```antlr
+EXPRESSAO
+    : NUMERO?
+    ;
+
+NUMERO
+    : DECIMAL
+    | INTEIRO+
+    ;
+
+INTEIRO
+    : '0'
+    | '1'
+    | '2'
+    | '3'
+    | '4'
+    | '5'
+    | '6'
+    | '7'
+    | '8'
+    | '9'
+    ;
+
+DECIMAL
+    : INTEIRO+ SEPARADOR INTEIRO+
+    ;
+
+SEPARADOR
+    : '.'
+    ;    
 ```
 
 Nessa nossa **descrição formal** acima nós definimos 4 (quatro) símbolos (também chamados **tokens**),
