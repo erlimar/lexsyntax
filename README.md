@@ -165,11 +165,81 @@ Você pegou a primeira expressão **"6s7,90"** e começou a avaliar cada caracte
 12. Então você concluíu: **Expressão Inválida!**. E foi por isso que você disse:
     **POW!**: o valor está errado!
 
-## Notas
+Seguindo o raciocínio do nosso exemplo, que diz que: logo em seguida ele nos informa o valor
+**76.56**, e você diz: **OBRIGADO!**: a distância é de **76.56 metros!**
 
-Pra não gerar confusão, observe que falamos de um `<NUMERO_DECIMAL>` e um `<DECIMAL>`. E no nosso dia
-a dia isso parece a mesma coisa, mas lembre-se que aqui são nomes de símbolos, e escolhemos dizer que
-`<DECIMAL>` representa um único caractere de número decimal; ex: `0` ou `1` ou `2`. Já para
-`<NUMERO_DECIMAL>` escolhemos para representar uma junção de caracteres de números decimais;
-ex: `120`, `02` ou `098765`.
-  
+### Vamos seguir novamente o caminho que seu cérebro percorreu até descobrir que o valor estava correto
+
+Você pegou a segunda expressão **"76.56"** e começou a avaliar cada caractere:
+
+ 1. Viu que a expressão espera um `NUMERO` e só.
+ 2. Pegou a expressão **"76.56"** e perguntou: é um `NUMERO`?
+ 3. Daí percebeu que você não sabia o que é um `NUMERO`, e então procurou em seu dicionário de
+    símbolos o que significava um `NUMERO`. Foi aí que conheceu que só poderia ser uma combinação
+    de um ou mais `DECIMAL`, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
+   `DECIMAL` novamente.
+ 4. Daí com **"76.56"** montou sua matrix de verificação, que seria: `Lista de DECIMAL`, e
+    `Um SEPARADOR` e `Lista de DECIMAL`. E começou a pegar as partes, a primeira é uma
+    `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
+ 5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
+    `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
+ 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando tudo que era
+    um `DECIMAL`. O que agora foram os caracteres `7` e `6`, porque `.` não atendia ao critério.
+ 7. Beleza! Até agora já temos o primeiro item, uma `Lista de DECIMAL` contendo dois itens: `7` e `6`.
+ 8. Você então, a partir do que sobrou, ou seja **".56"**, continuou a buscar suas partes.
+    O que você esperava agora deveria ser `Um SEPARADOR`. E vejam só! Você também não sabe o que é
+    um `SEPARADOR`.
+ 9. Volta a recorrer a seu dicionário, e descobre que um separador só pode ser o caractere `.` (ponto).
+10. Com isso, você percebe que o caractere da vez, o **"."** é exatamente o que espera. E determina
+    o valor de `SEPARADOR` como `.`.
+11. Beleza de novo! Até agora já temos dois itens, uma `Lista de DECIMAL` contendo dois itens:
+    `7` e `6`; e `Um SEPARADOR` com valor `.`.
+12. Você então, a partir do que sobrou, ou seja **"56"**, continuou a buscar suas partes.
+    O que você esperava agora deveria ser outra `Lista de DECIMAL`. Mas agora você já sabe o que é.
+13. Você novamente, percorreu a lista capturando tudo que era um `DECIMAL`. O que agora foram os
+    caracteres `5` e `6`, porque você chegou ao fim. E chegamos ao último item, uma `Lista de DECIMAL`
+    contendo dois itens: `5` e `6`.
+14. Nesse ponto, como você já chegou ao fim dos dados, fez a conferência e notou:
+    a) O que você esperava para um `NUMERO` eram três items. E você **TEM** três items;
+    b) O _primeiro item_ deve ser uma sequência de números decimais: E você **TEM** como primeiro
+       item a lista (`7`,`6`);
+    c) O _segundo item_ deve ser um caractere `.`: E você **TEM** como segundo item o caractere `.`;
+    d) O _terceiro item_ deve ser outra sequência de números decimais: E você **TEM** como terceiro
+       item a lista (`5`, `6`);
+15. Com todos os items verificados, você obteve o seguinte resultado:
+```js
+let resultado = {
+  "tipo": "token",
+  "id": "EXPRESSAO",
+  "valor": {
+    "tipo": "token",
+    "id": "NUMERO",
+    "valor: [
+      {
+        "tipo": "token",
+        "id": "DECIMAL",
+        "valor": "76"
+      },
+      {
+        "tipo": "token",
+        "id": "SEPARADOR",
+        "valor": "."
+      },
+      {
+        "tipo": "token",
+        "id": "DECIMAL",
+        "valor": "56"
+      }
+    ]
+  }
+}
+```
+16. Então você concluíu: **Expressão válida!**.
+17. Em seguida, com o resultado em mãos, e como a estrutura já era conhecida, você
+    pode, com toda segurança fazer uma conversão simples:
+```js
+let valor_parte1 = resultado.valor.valor[0];
+let valor_parte2 = resultado.valor.valor[2];
+let valor_final = valor_parte1 + '.' + valor_parte2 + ' metros';
+```
+    E disse: **OBRIGADO!**: a distância é de **76.56 metros!**
