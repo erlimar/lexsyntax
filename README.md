@@ -202,13 +202,13 @@ Você pegou a segunda expressão **"76.56"** e começou a avaliar cada caractere
     caracteres `5` e `6`, porque você chegou ao fim. E chegamos ao último item, uma `Lista de DECIMAL`
     contendo dois itens: `5` e `6`.
 14. Nesse ponto, como você já chegou ao fim dos dados, fez a conferência e notou:
-    a) O que você esperava para um `NUMERO` eram três items. E você **TEM** três items;
+    a) O que você esperava para um `NUMERO` eram três itens. E você **TEM** três itens;
     b) O _primeiro item_ deve ser uma sequência de números decimais: E você **TEM** como primeiro
        item a lista (`7`,`6`);
     c) O _segundo item_ deve ser um caractere `.`: E você **TEM** como segundo item o caractere `.`;
     d) O _terceiro item_ deve ser outra sequência de números decimais: E você **TEM** como terceiro
        item a lista (`5`, `6`);
-15. Com todos os items verificados, você obteve o seguinte resultado:
+15. Com todos os itens verificados, você obteve o seguinte resultado:
 ```js
 let resultado = {
   "tipo": "token",
