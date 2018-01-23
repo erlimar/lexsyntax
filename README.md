@@ -3,12 +3,8 @@ LexSyntax
 
 LexSyntax é um scanner léxico pseudo analisador sintático.
 
-O objetivo é criar um scanner de código capaz de identificar tokens de uma definição sintática.
-Com ele temos uma forma de validar qualquer entrada de texto com base em uma definição sintática
-básica.
-
-O resultado imediato é que podemos **validar** uma entrada de texto com base em um formato
-esperado.
+Ele é capaz de identificar tokens à partir de uma definição sintática, assim conseguimos
+**validar** qualquer entrada de texto com base em um formato esperado.
 
 Um resultado possível é que, com o objeto resultante de uma análise bem sucedida podemos emitir
 alguma ação sobre os dados, obtendo assim um **emissor** de valores, ou seja, um conversor de
