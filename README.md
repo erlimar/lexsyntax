@@ -242,4 +242,4 @@ let valor_parte1 = resultado.valor.valor[0];
 let valor_parte2 = resultado.valor.valor[2];
 let valor_final = valor_parte1 + '.' + valor_parte2 + ' metros';
 ```
-    E disse: **OBRIGADO!**: a distância é de **76.56 metros!**
+18. Por fim, disse: **OBRIGADO!**: a distância é de **76.56 metros!**
