@@ -108,3 +108,50 @@ DASH
 * `0/0/0000`
 * `0/0/00`
 * `0000-00-00`
+
+
+## ANTLR
+
+```antlr
+EXPR
+    : NAME_EXPR ':' TYPE_EXPR '|' TYPE_EXPR ';'
+    | NAME_EXPR ':' TYPE_EXPR ';'
+    ;
+
+OR_EXPR
+    : '|' TYPE_EXPR
+    ;
+
+TYPE_EXPR
+    : NAME_WITH_STATIC_EXPR
+    | NAME_WITH_INFINIT_EXPR
+    | NAME_EXPR
+    | CHAR_EXPR
+    ;
+
+NAME_WITH_STATIC_EXPR
+    : NAME_EXPR '{' DECIMAL+ '}' // NAME{00}
+
+NAME_WITH_INFINIT_EXPR
+    : NAME_EXPR '+' // NAME+
+    ;
+
+NAME_EXPR
+    : CHAR+ // NAME_NAME_NAME
+    ;
+
+CHAR_EXPR
+    : '\'' CHAR '\'' // 'C'
+    ;
+
+CHAR
+    : ['a'..'z']
+    | ['A'..'Z']
+    | DECIMAL
+    | '_'
+    ;
+
+DECIMAL
+    : [0..9]
+    ;
+```
