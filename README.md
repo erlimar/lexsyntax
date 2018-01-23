@@ -34,15 +34,14 @@ como abaixo:
 
 ```antlr
 EXPRESSAO
-    : NUMERO?
+    : NUMERO
     ;
 
 NUMERO
-    : DECIMAL
-    | INTEIRO+
+    : DECIMAL+ SEPARADOR DECIMAL+
     ;
 
-INTEIRO
+DECIMAL
     : '0'
     | '1'
     | '2'
@@ -53,10 +52,6 @@ INTEIRO
     | '7'
     | '8'
     | '9'
-    ;
-
-DECIMAL
-    : INTEIRO+ SEPARADOR INTEIRO+
     ;
 
 SEPARADOR
