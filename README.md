@@ -145,7 +145,7 @@ Você pegou a primeira expressão **"6s7,90"** e começou a avaliar cada caracte
     símbolos o que significava um `NUMERO`. Foi aí que conheceu que só poderia ser uma combinação
     de um ou mais `DECIMAL`, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
    `DECIMAL` novamente.
- 4. Daí com **"6s7,90"** montou sua matrix de verificação, que seria: `Lista de DECIMAL`, e
+ 4. Daí com **"6s7,90"** montou sua matriz de verificação, que seria: `Lista de DECIMAL`, e
     `Um SEPARADOR` e `Lista de DECIMAL`. E começou a pegar as partes, a primeira é uma
     `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
  5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
@@ -178,7 +178,7 @@ Você pegou a segunda expressão **"76.56"** e começou a avaliar cada caractere
     símbolos o que significava um `NUMERO`. Foi aí que conheceu que só poderia ser uma combinação
     de um ou mais `DECIMAL`, seguido de um  `SEPARADOR`, seguido de uma combinação de um ou mais
    `DECIMAL` novamente.
- 4. Daí com **"76.56"** montou sua matrix de verificação, que seria: `Lista de DECIMAL`, e
+ 4. Daí com **"76.56"** montou sua matriz de verificação, que seria: `Lista de DECIMAL`, e
     `Um SEPARADOR` e `Lista de DECIMAL`. E começou a pegar as partes, a primeira é uma
     `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
  5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
