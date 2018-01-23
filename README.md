@@ -150,8 +150,9 @@ Você pegou a primeira expressão **"6s7,90"** e começou a avaliar cada caracte
     `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
  5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
     `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
- 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando tudo que era
-    um `DECIMAL`. O que na verdade só foi o caractere `6`, porque `s` não atendia ao critério.
+ 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando os caracteres
+    enquanto fossem um `DECIMAL`. O que na verdade só foi o caractere `6`, porque `s` não atendia
+    ao critério.
  7. Beleza! Até agora já temos o primeiro item, uma `Lista de DECIMAL` contendo um item: `6`.
  8. Você então, a partir do que sobrou, ou seja **"s7,90"**, continuou a buscar suas partes.
     O que você esperava agora deveria ser `Um SEPARADOR`. E vejam só! Você também não sabe o que é
@@ -183,8 +184,9 @@ Você pegou a segunda expressão **"76.56"** e começou a avaliar cada caractere
     `Lista de DECIMAL`, mas espera aí: O que é um `DECIMAL`?
  5. Recorreu novamente a seu dicionário, e descobriu que se tratava de um dos seguintes caracteres:
     `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8` ou `9`.
- 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando tudo que era
-    um `DECIMAL`. O que agora foram os caracteres `7` e `6`, porque `.` não atendia ao critério.
+ 6. Agora sim, você começou a pegar a primeira parte, e percorreu a lista capturando os caracteres
+    enquanto fossem um `DECIMAL`. O que agora foram os caracteres `7` e `6`, porque `.` não atendia
+    ao critério.
  7. Beleza! Até agora já temos o primeiro item, uma `Lista de DECIMAL` contendo dois itens: `7` e `6`.
  8. Você então, a partir do que sobrou, ou seja **".56"**, continuou a buscar suas partes.
     O que você esperava agora deveria ser `Um SEPARADOR`. E vejam só! Você também não sabe o que é
