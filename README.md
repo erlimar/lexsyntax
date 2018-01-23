@@ -245,3 +245,21 @@ let valor_parte2 = resultado.valor.valor[2];
 let valor_final = valor_parte1 + '.' + valor_parte2 + ' metros';
 ```
 18. Por fim, disse: **OBRIGADO!**: a distância é de **76.56 metros!**
+
+## Conclusão
+
+No exemplo que apresentamos o que ocorreu com seu cérebro, foi que você extraiu os dados de um texto
+e analisou com base nas definições de um idioma que você conhecia, e com o resultado da análise você
+compilou uma resposta.
+
+Podemos então perceber que um scanner e analisador sintático, analisa e gera informações coerentes
+para serem usadas por um próximo componente, um compilador, esse gera uma resposta mais adequada.
+
+E para o propósito a que se destina esse componente **LexSyntax**, o compilador que falamos aqui não
+é necessariamente um compilador de programas de computador de forma geral, mas um componente que compila
+uma informação menor, usada em um programa, no caso um conversor de dados.
+
+## Próximos passos
+
+* [Veja aqui](APLICACOES.md) algumas outras aplicações;
+* [Veja aqui](DEFINICAO_CSHARP.md) uma definição de uso em **C# .NET**.
