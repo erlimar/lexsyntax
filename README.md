@@ -10,7 +10,7 @@ Um resultado possível é que, com o objeto resultante de uma análise bem suced
 alguma ação sobre os dados, obtendo assim um **emissor** de valores, ou seja, um conversor de
 tipos de dados complexos.
 
-## Visão Geral
+## Um Exemplo
 
 Imagine que você deseja que um usuário entre com um determinado valor em um campo texto qualquer
 em uma interface gráfica conhecida. Esse valor deve ser uma distância.
@@ -90,6 +90,12 @@ são eles: `EXPRESSAO`, `NUMERO`, `DECIMAL` e `SEPARADOR`.
 * `SEPARADOR`
 
   E esse então, só pode ser um `.` (ponto). Nada além disso.
+
+__Resumindo:__ A `EXPRESSAO` que esperamos é um `NUMERO`, que por sua vez deve ser um ou mais `DECIMAL` (que é um número de `0` a `9`) + um `SEPARADOR` (que é um ponto) + outro `DECIMAL`. Que poderia ser qualquer uma das sequências abaixo:
+
+- `0.0`
+- `1.23`
+- `999.1`
   
 ## Explicando
 
@@ -103,7 +109,13 @@ ser usados em uma expressão, esses caracteres só podem ser agrupados em uma or
 rigidamente, e que qualquer coisa fora disso é uma **expressão inválida**.
 Chamamos isso de **gramática**.
 
-## Voltando a Visão Geral
+A **Gramática** determina um grupo de palavras _(tokens)_ que devem ser dispostas de uma forma _(syntax)_
+para fazer sentido em seu idioma.
+
+No exemplo acima, o que fizemos foi descrever formalmente um idioma básico, pois contém os _tokens_ e
+a _syntax_ desse idioma. Com essas regras podemos avaliar se uma escrita está ou não nesse idioma.
+
+## Voltando o Exemplo
 
 Com essa explicação que clarea nossa mente (pelo menos parcialmente, eu espero), podemos então
 voltar ao exemplo inicial.
