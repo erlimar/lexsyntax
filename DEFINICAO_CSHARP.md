@@ -62,3 +62,40 @@ var resultOk = expressao.Eval("76.56"); // Success!
 
 delegate EvalFunc = (string code) => return new TokenResult();
 ```
+
+## Representação C# com API Fluente
+
+```csharp
+var grammar = new LexSyntaxGrammar()
+
+    .Def("EXPRESSAO", _ => _.Rule("NUMERO"))
+    
+    .Def("NUMERO", _ => _
+        .List(l => l
+            .Unlimited("DECIMAL")
+            .Rule("SEPARADOR")
+            .Unlimited("DECIMAL")
+        )
+        .Rule("DECIMAL")
+    )
+
+    .Def("DECIMAL", _ => _.CharRange('0','9'))
+
+    .Def("SEPARADOR", _ => _.Char('.'))
+
+    ;
+
+var scanner = new LexSyntaxScanner(grammar);
+
+LexSyntaxTree rFail = scanner.Parse(new LexSyntaxStringStream("6s7,90"));
+LexSyntaxTree rOk = scanner.Parse(new LexSyntaxStringStream("76.56"));
+
+Assert.False(rFail.IsValid);
+Assert.True(rOk.IsValid);
+
+Assert.Null(rFail.Root);
+Assert.NotNull(rOk.Root);
+
+Assert.Equal("NUMERO", rOk.Root.Name);
+Assert.Equal(LexSyntaxTreeType.Rule, rOk.Root.Type);
+```
